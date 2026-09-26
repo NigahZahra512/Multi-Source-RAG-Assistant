@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Advanced Multi-Source RAG — Working v1
 
 Ye Day 1-2-4 ka **working MVP** hai — PDF/website/CSV ingest karo, index bano,
@@ -38,3 +39,7 @@ Browser mein `http://localhost:8501` khul jayega.
 - Re-ranking layer add karna jo teeno retrievers ka output merge kare
 
 Jab ye MVP chal jaye, humein batayein — phir hum ye teen cheezein add karenge.
+=======
+# Multi-Source-RAG-Assistant
+A multi-source RAG system that answers questions from PDFs, websites, and CSVs with cited sources — built with LangChain, FAISS, and Groq.
+>>>>>>> df7331c26a81160334a3c854ddf267d920764367
