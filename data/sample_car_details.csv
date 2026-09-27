@@ -1,0 +1,13 @@
+name,year,selling_price,km_driven,fuel,seller_type,transmission,owner,mileage,engine,max_power,torque,seats
+Maruti Swift Dzire VDI,2014,450000,145500,Diesel,Individual,Manual,First Owner,23.4 kmpl,1248 CC,74 bhp,190Nm@ 2000rpm,5
+Skoda Rapid 1.5 TDI Ambition,2014,370000,120000,Diesel,Individual,Manual,Second Owner,21.14 kmpl,1498 CC,103.52 bhp,250Nm@ 1500-2500rpm,5
+Honda City 2017-2020 EXi,2014,158000,140000,Petrol,Individual,Manual,Third Owner,17.7 kmpl,1497 CC,78 bhp,12.7@ 2700(kgm@ rpm),5
+Hyundai i20 Sportz Diesel,2010,225000,127000,Diesel,Individual,Manual,First Owner,23.0 kmpl,1396 CC,90 bhp,22.4 kgm at 1750-2750rpm,5
+Maruti Swift VXI BSIII,2007,130000,120000,Petrol,Individual,Manual,First Owner,16.1 kmpl,1298 CC,88.2 bhp,11.5@ 4,500(kgm@ rpm),5
+Hyundai Xcent 1.2 VTVT E Plus,2016,440000,45000,Petrol,Individual,Manual,Second Owner,19.1 kmpl,1197 CC,81.86 bhp,113.75nm@ 4000rpm,5
+Tata Indigo Grand Petrol,2014,96000,175000,Petrol,Individual,Manual,First Owner,15.11 kmpl,1172 CC,63.1 bhp,96Nm@ 3000rpm,5
+Hyundai Creta 1.6 CRDi SX Option,2015,1000000,90000,Diesel,Individual,Manual,First Owner,19.67 kmpl,1582 CC,126.2 bhp,259.8Nm@ 1500-2750rpm,5
+Maruti Celerio Green VXI,2017,440000,45000,CNG,Individual,Manual,First Owner,32.26 km/kg,998 CC,58.2 bhp,78Nm@ 3500rpm,5
+Toyota Innova 2.0 G 8 STR,2011,570000,110000,Petrol,Individual,Manual,First Owner,10.8 kmpl,1998 CC,131.7 bhp,180Nm@ 4000rpm,8
+Datsun RediGO T Option,2019,315000,15000,Petrol,Individual,Manual,First Owner,22.9 kmpl,799 CC,53.6 bhp,72Nm@ 4250rpm,5
+Mahindra XUV500 W8 2WD,2013,620000,95000,Diesel,Individual,Manual,First Owner,16.0 kmpl,2179 CC,140 bhp,330Nm@ 1600-2800rpm,7

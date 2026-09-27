@@ -1,21 +1,16 @@
 """
-QUERY CONSTRUCTION + LLM CALL + CITATIONS
---------------------------------------------
-Ye file diagram ke steps 6-9 cover karti hai (abhi ke liye single
-vector-retriever ke sath - multi-retriever + re-ranking hum Day 3 mein
-add karenge).
-
-Flow:
-  1. User ka sawal aata hai
-  2. Retriever FAISS se top-k relevant chunks nikalta hai   (Retrieval)
-  3. Un chunks ko ek prompt mein LLM ko diya jata hai        (Query Construction)
-  4. LLM answer generate karta hai, sources ke sath           (Response Format)
+QUERY CONSTRUCTION + LLM CALL + CITATIONS  (with conversation memory + chunk transparency + full-CSV fallback)
+--------------------------------------------------------------------------------------------------------------
+Naya: agar chota CSV dataset index hua hai, uska POORA data bhi context
+mein add hota hai - taake "filter/compare across all rows" type sawalon
+(jaise "7 seats wali konsi car hai") ka sahi jawab mile, sirf top-k
+retrieval pe depend na rahe.
 """
 
 import os
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from indexing import load_vector_index
+from multi_retriever import multi_retrieve
 
 load_dotenv()
 
@@ -27,41 +22,75 @@ llm = ChatGroq(
 
 SYSTEM_PROMPT = """You are a knowledge-base assistant. Answer ONLY using the
 provided context. If the answer is not in the context, say you don't know -
-never make something up. Keep answers concise. After the answer, list the
-sources you used."""
+never make something up. Use the conversation history to understand
+follow-up questions (e.g. "explain the first one" refers to something
+mentioned earlier), but still ground your answer in the provided context.
+Keep answers concise.
+
+IMPORTANT: Always answer in the SAME language the user's question is written
+in. If the question is in English, answer in English. If the question is in
+Urdu (or Roman Urdu, i.e. Urdu written in English letters), answer in that
+same style. Match the user's language exactly - do not switch languages.
+
+If a "Full dataset" section is present in the context, use it to answer
+questions that require checking, filtering, or comparing across ALL rows
+(e.g. "which has the most seats", "is there a 2019 model") - don't rely
+only on the top retrieved snippets for such questions."""
+
+MAX_HISTORY_TURNS = 3
+CSV_DUMP_PATH = "data/full_csv_dump.txt"
 
 
-def answer_question(query: str, top_k: int = 4) -> dict:
-    vectorstore = load_vector_index()
+def answer_question(query: str, history: list[dict] | None = None, final_k: int = 4) -> dict:
+    results = multi_retrieve(query, top_k_per_retriever=4, final_k=final_k)
 
-    # Retrieval: FAISS se sab se relevant chunks nikalna
-    results = vectorstore.similarity_search_with_score(query, k=top_k)
+    if not results:
+        return {
+            "answer": "Mujhe is sawal ka jawab apne documents mein nahi mila.",
+            "sources": [], "retrievers_used": [], "retrieved_chunks": [],
+        }
 
-    context_parts = []
-    sources = []
-    for doc, score in results:
-        context_parts.append(doc.page_content)
-        source_label = doc.metadata.get("source", "unknown")
-        page = doc.metadata.get("page")
+    context_parts, sources, retrievers_used, retrieved_chunks = [], [], [], []
+
+    for r in results:
+        context_parts.append(r["text"])
+        source_label = r["source"]
+        page = r.get("page")
         sources.append(f"{source_label}" + (f" (page {page})" if page is not None else ""))
+        retrievers_used.append(r["retriever"])
+        retrieved_chunks.append({
+            "text": r["text"],
+            "source": source_label,
+            "retriever": r["retriever"],
+            "score": round(r.get("score", 0), 3),
+        })
 
     context = "\n\n---\n\n".join(context_parts)
 
-    # Query Construction: context + question ko ek prompt mein jorna
+    # Chota CSV dataset ho to poora data bhi context mein shamil karo
+    if os.path.exists(CSV_DUMP_PATH):
+        with open(CSV_DUMP_PATH, "r", encoding="utf-8") as f:
+            full_csv_text = f.read()
+        context += f"\n\n---\n\nFull dataset (all rows, for accurate filtering/comparison):\n{full_csv_text}"
+
     user_prompt = f"Context:\n{context}\n\nQuestion: {query}"
 
-    response = llm.invoke([
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": user_prompt},
-    ])
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    if history:
+        trimmed = history[-(MAX_HISTORY_TURNS * 2):]
+        messages.extend(trimmed)
+    messages.append({"role": "user", "content": user_prompt})
+
+    response = llm.invoke(messages)
 
     return {
         "answer": response.content,
-        "sources": list(dict.fromkeys(sources)),  # duplicates hata dega, order rakhega
+        "sources": list(dict.fromkeys(sources)),
+        "retrievers_used": list(dict.fromkeys(retrievers_used)),
+        "retrieved_chunks": retrieved_chunks,
     }
 
 
 if __name__ == "__main__":
     result = answer_question("What is this document about?")
     print(result["answer"])
-    print("\nSources:", result["sources"])

@@ -1,0 +1,157 @@
+Row 1: name: Maruti Swift Dzire VDI
+year: 2014
+selling_price: 450000
+km_driven: 145500
+fuel: Diesel
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 23.4 kmpl
+engine: 1248 CC
+max_power: 74 bhp
+torque: 190Nm@ 2000rpm
+seats: 5
+Row 2: name: Skoda Rapid 1.5 TDI Ambition
+year: 2014
+selling_price: 370000
+km_driven: 120000
+fuel: Diesel
+seller_type: Individual
+transmission: Manual
+owner: Second Owner
+mileage: 21.14 kmpl
+engine: 1498 CC
+max_power: 103.52 bhp
+torque: 250Nm@ 1500-2500rpm
+seats: 5
+Row 3: name: Honda City 2017-2020 EXi
+year: 2014
+selling_price: 158000
+km_driven: 140000
+fuel: Petrol
+seller_type: Individual
+transmission: Manual
+owner: Third Owner
+mileage: 17.7 kmpl
+engine: 1497 CC
+max_power: 78 bhp
+torque: 12.7@ 2700(kgm@ rpm)
+seats: 5
+Row 4: name: Hyundai i20 Sportz Diesel
+year: 2010
+selling_price: 225000
+km_driven: 127000
+fuel: Diesel
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 23.0 kmpl
+engine: 1396 CC
+max_power: 90 bhp
+torque: 22.4 kgm at 1750-2750rpm
+seats: 5
+Row 5: name: Maruti Swift VXI BSIII
+year: 2007
+selling_price: 130000
+km_driven: 120000
+fuel: Petrol
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 16.1 kmpl
+engine: 1298 CC
+max_power: 88.2 bhp
+torque: 11.5@ 4
+seats: 500(kgm@ rpm)
+None: 5
+Row 6: name: Hyundai Xcent 1.2 VTVT E Plus
+year: 2016
+selling_price: 440000
+km_driven: 45000
+fuel: Petrol
+seller_type: Individual
+transmission: Manual
+owner: Second Owner
+mileage: 19.1 kmpl
+engine: 1197 CC
+max_power: 81.86 bhp
+torque: 113.75nm@ 4000rpm
+seats: 5
+Row 7: name: Tata Indigo Grand Petrol
+year: 2014
+selling_price: 96000
+km_driven: 175000
+fuel: Petrol
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 15.11 kmpl
+engine: 1172 CC
+max_power: 63.1 bhp
+torque: 96Nm@ 3000rpm
+seats: 5
+Row 8: name: Hyundai Creta 1.6 CRDi SX Option
+year: 2015
+selling_price: 1000000
+km_driven: 90000
+fuel: Diesel
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 19.67 kmpl
+engine: 1582 CC
+max_power: 126.2 bhp
+torque: 259.8Nm@ 1500-2750rpm
+seats: 5
+Row 9: name: Maruti Celerio Green VXI
+year: 2017
+selling_price: 440000
+km_driven: 45000
+fuel: CNG
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 32.26 km/kg
+engine: 998 CC
+max_power: 58.2 bhp
+torque: 78Nm@ 3500rpm
+seats: 5
+Row 10: name: Toyota Innova 2.0 G 8 STR
+year: 2011
+selling_price: 570000
+km_driven: 110000
+fuel: Petrol
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 10.8 kmpl
+engine: 1998 CC
+max_power: 131.7 bhp
+torque: 180Nm@ 4000rpm
+seats: 8
+Row 11: name: Datsun RediGO T Option
+year: 2019
+selling_price: 315000
+km_driven: 15000
+fuel: Petrol
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 22.9 kmpl
+engine: 799 CC
+max_power: 53.6 bhp
+torque: 72Nm@ 4250rpm
+seats: 5
+Row 12: name: Mahindra XUV500 W8 2WD
+year: 2013
+selling_price: 620000
+km_driven: 95000
+fuel: Diesel
+seller_type: Individual
+transmission: Manual
+owner: First Owner
+mileage: 16.0 kmpl
+engine: 2179 CC
+max_power: 140 bhp
+torque: 330Nm@ 1600-2800rpm
+seats: 7
