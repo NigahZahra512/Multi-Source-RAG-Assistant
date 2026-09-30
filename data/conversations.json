@@ -1,0 +1,165 @@
+{
+  "ef381036": {
+    "title": "give a main idea of 3rd slide from it",
+    "created_at": "2026-09-30T07:54:57.538128",
+    "messages": [
+      {
+        "role": "user",
+        "content": "give a main idea of 3rd slide from it"
+      },
+      {
+        "role": "assistant",
+        "content": "The third slide’s main idea is that the scheduler keeps a **wait‑for graph** to detect deadlock cycles.  \nIf a cycle is found, one transaction in the cycle is chosen as a victim and is rolled back.",
+        "sources": [
+          "data/pdfs\\concurrency Control Techniques.pdf (page 19)",
+          "data/pdfs\\concurrency Control Techniques.pdf (page 13)"
+        ],
+        "retrievers_used": [
+          "sentence-window"
+        ],
+        "retrieved_chunks": [
+          {
+            "text": "◼ A wait-for-graph is created using the lock table. As soon as \na transaction is blocked, it is added to the graph. When a \nchain like: Ti waits for Tj waits for Tk waits for Ti or Tj \noccurs, then this creates a cycle. One of the transaction \nneeds to be rolled back",
+            "source": "data/pdfs\\concurrency Control Techniques.pdf",
+            "retriever": "sentence-window",
+            "score": -11.431
+          },
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\nDatabase Concurrency Control\nTwo-Phase Locking Techniques: The algorithm\n \n T1   T2      Result\n read_lock (Y);  read_lock (X);     Initial values: X=20; Y=30\n read_item (Y);  read_item (X);     Result of serial execution\n unlock (Y);  unlock (X);     T1 followed by T2 \n write_lock (X);  Write_lock (Y);     X=50, Y=80. read_item (X);  read_item (Y);     Result of serial execution\n X:=X+Y;  Y:=X+Y;      T2 followed by T1 \n write_item (X);  write_item (Y);     X=70, Y=50\n unlock (X);  unlock (Y);",
+            "source": "data/pdfs\\concurrency Control Techniques.pdf",
+            "retriever": "sentence-window",
+            "score": -11.446
+          },
+          {
+            "text": "The \nscheduler maintains a wait-for-graph for detecting cycle. If \na cycle exists, then one transaction involved in the cycle is \nselected (victim) and rolled-back. ◼ A wait-for-graph is created using the lock table. As soon as \na transaction is blocked, it is added to the graph. When a \nchain like: Ti waits for Tj waits for Tk waits for Ti or Tj \noccurs, then this creates a cycle.",
+            "source": "data/pdfs\\concurrency Control Techniques.pdf",
+            "retriever": "sentence-window",
+            "score": -11.452
+          }
+        ]
+      }
+    ]
+  },
+  "fd8d5ed3": {
+    "title": "write the summary of this pdf in simple ...",
+    "created_at": "2026-09-30T08:06:31.447368",
+    "messages": [
+      {
+        "role": "user",
+        "content": "write the summary of this pdf in simple wording"
+      },
+      {
+        "role": "assistant",
+        "content": "The PDF has two main parts:\n\n1. **Database Concurrency Control** – It shows a short example of the Two‑Phase Locking (2PL) algorithm. Two transactions (T1 and T2) acquire read locks, read values, release locks, then acquire write locks, update the variables X and Y, and finally write the new values back. The table lists the steps and the final results of the variables after the transactions run in two different orders.\n\n2. **Car Dataset** – It lists 12 cars with details such as name, year, price, mileage, engine size, fuel type, transmission, owner, torque, and how many seats each car has. Each row gives a quick snapshot of a particular vehicle.",
+        "sources": [
+          "data/pdfs\\concurrency Control Techniques.pdf (page 13)",
+          "data/pdfs\\concurrency Control Techniques.pdf (page 0)"
+        ],
+        "retrievers_used": [
+          "sentence-window",
+          "vector"
+        ],
+        "retrieved_chunks": [
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\nDatabase Concurrency Control\nTwo-Phase Locking Techniques: The algorithm\n \n T1   T2      Result\n read_lock (Y);  read_lock (X);     Initial values: X=20; Y=30\n read_item (Y);  read_item (X);     Result of serial execution\n unlock (Y);  unlock (X);     T1 followed by T2 \n write_lock (X);  Write_lock (Y);     X=50, Y=80. read_item (X);  read_item (Y);     Result of serial execution\n X:=X+Y;  Y:=X+Y;      T2 followed by T1 \n write_item (X);  write_item (Y);     X=70, Y=50\n unlock (X);  unlock (Y);",
+            "source": "data/pdfs\\concurrency Control Techniques.pdf",
+            "retriever": "sentence-window",
+            "score": -10.904
+          },
+          {
+            "text": "Copyright © 2011 Pearson Education, Inc. Publishing as Pearson Addison-Wesley\nChapter 22\nConcurrency \nControl Techniques",
+            "source": "data/pdfs\\concurrency Control Techniques.pdf",
+            "retriever": "vector",
+            "score": -11.436
+          }
+        ]
+      }
+    ]
+  },
+  "b1379e11": {
+    "title": "what is indexing",
+    "created_at": "2026-09-30T08:13:09.777193",
+    "messages": [
+      {
+        "role": "user",
+        "content": "what is indexing"
+      },
+      {
+        "role": "assistant",
+        "content": "Indexing is an auxiliary file that stores entries of the form <field value, pointer to record> (usually ordered by the field value). It serves as an access path, allowing the database to locate records quickly, reduce search cost, minimize I/O operations, improve query response time, and support scalable data systems.",
+        "sources": [
+          "data/pdfs\\Indexing Structures.pdf (page 3)",
+          "data/pdfs\\Indexing Structures.pdf (page 1)",
+          "data/pdfs\\Indexing Structures.pdf (page 17)",
+          "data/pdfs\\Indexing Structures.pdf (page 13)"
+        ],
+        "retrievers_used": [
+          "vector"
+        ],
+        "retrieved_chunks": [
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\nIndexes as Access Paths\n■ A single-level index is an auxiliary file that makes \nit more efficient to search for a record in the data \nfile.\n■ The index is usually specified on one field of the \nfile (although it could be specified on several \nfields)\n■ One form of an index is a file of entries <field \nvalue, pointer to record>, which is ordered by \nfield value\n■ The index is called an access path on the field.",
+            "source": "data/pdfs\\Indexing Structures.pdf",
+            "retriever": "vector",
+            "score": 2.761
+          },
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\nWhy Indexing Exists\n■ Reduce search cost\n■ Minimize I/O operations\n■ Improve query response time\n■ Enable scalable data systems",
+            "source": "data/pdfs\\Indexing Structures.pdf",
+            "retriever": "vector",
+            "score": 1.864
+          },
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\nMulti-Level Indexes \n■ Such a multi-level index is a form of search tree\n■ However, insertion and deletion of new index \nentries is a severe problem because every level of \nthe index is an ordered file.",
+            "source": "data/pdfs\\Indexing Structures.pdf",
+            "retriever": "vector",
+            "score": -1.509
+          },
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\nExample of \na Secondary \nIndex",
+            "source": "data/pdfs\\Indexing Structures.pdf",
+            "retriever": "vector",
+            "score": -6.158
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": "what is transaction processing"
+      },
+      {
+        "role": "assistant",
+        "content": "Transaction processing is a database system’s mechanism for executing a **transaction**—a logical unit of work that may contain one or more read, write (insert/update), or delete operations.  \nA transaction is bounded by a **Begin** and an **End** (commit/rollback) marker, ensuring that all its operations are treated as a single, atomic unit.  \n\nKey aspects include:  \n- **Single‑user** systems allow only one user at a time.  \n- **Multi‑user** systems permit concurrent access, requiring concurrency control.  \n- Concurrency is handled via **interleaved processing** (single CPU) or **parallel processing** (multiple CPUs).  \n\nThe goal is to maintain data integrity, consistency, isolation, and durability (ACID properties) while efficiently managing concurrent transactions.",
+        "sources": [
+          "data/pdfs\\TransactionProcessing.pdf (page 2)",
+          "data/pdfs\\TransactionProcessing.pdf (page 1)",
+          "data/pdfs\\TransactionProcessing.pdf (page 0)"
+        ],
+        "retrievers_used": [
+          "sentence-window",
+          "vector"
+        ],
+        "retrieved_chunks": [
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\nIntroduction to Transaction Processing (2)\n■ A Transaction:\n■ Logical unit of database processing that includes one or more access operations (read -retrieval, write - insert or update, delete). ■ A transaction (set of operations) may be stand-alone specified in a high level language like SQL submitted interactively, or may be embedded within a program. ■ Transaction boundaries:\n■ Begin and End transaction.",
+            "source": "data/pdfs\\TransactionProcessing.pdf",
+            "retriever": "sentence-window",
+            "score": 7.995
+          },
+          {
+            "text": "Copyright © 2011 Ramez Elmasri and Shamkant Navathe\n1 Introduction to Transaction \nProcessing (1)\n■ Single-User System:\n■ At most one user at a time can use the system. \n■ Multiuser System:\n■ Many users can access the system concurrently.\n■ Concurrency\n■ Interleaved processing:\n■ Concurrent execution of processes is interleaved in a single CPU\n■ Parallel processing:\n■ Processes are concurrently executed in multiple CPUs.",
+            "source": "data/pdfs\\TransactionProcessing.pdf",
+            "retriever": "vector",
+            "score": 5.857
+          },
+          {
+            "text": "Copyright © 2011 Pearson Education, Inc. Publishing as Pearson Addison-Wesley\nChapter 21\nIntroduction to \nTransaction Processing \nConcepts and Theory",
+            "source": "data/pdfs\\TransactionProcessing.pdf",
+            "retriever": "vector",
+            "score": 2.132
+          }
+        ]
+      }
+    ]
+  }
+}
